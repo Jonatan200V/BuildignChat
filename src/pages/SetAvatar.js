@@ -15,10 +15,8 @@ const SetAvatar = () => {
   const [avatars, setAvatars] = useState();
   const [selectedAvatar, setSelectedAvatar] = useState(null);
   const navigate = useNavigate();
-  // const [image, setImage] = useState('');
   useEffect(() => {
     const existUser = window.localStorage.getItem('user');
-    console.log(existUser);
     if (!existUser) {
       navigate('/login');
     }
@@ -32,12 +30,10 @@ const SetAvatar = () => {
       return toast.error('Please select an avatar', VALIDATIONS);
     }
     const user = JSON.parse(window.localStorage.getItem('user'));
-    console.log(user);
     if (user[0]?._id) {
       const { data } = await axios.post(`${setAvatarRoute}/${user[0]._id}`, {
         avatarImage: avatars[selectedAvatar],
       });
-      console.log(data);
       if (data.isSet) {
         user.isAvatarImageSet = true;
         user.avatarImage = data.image;
@@ -49,7 +45,6 @@ const SetAvatar = () => {
       const { data } = await axios.post(`${setAvatarRoute}/${user._id}`, {
         avatarImage: avatars[selectedAvatar],
       });
-      console.log(data);
       if (data.isSet) {
         user.isAvatarImageSet = true;
         user.avatarImage = data.image;

@@ -12,7 +12,6 @@ const Register = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const userRegister = JSON.parse(window.localStorage.getItem('user'));
-    console.log(userRegister);
     if (userRegister) {
       navigate('/');
     }
@@ -28,7 +27,6 @@ const Register = () => {
       if (!data.status) {
         return toast.error('User exists', VALIDATIONS);
       }
-      console.log(data.status);
       window.localStorage.setItem('user', JSON.stringify(data.newUser));
       navigate('/setAvatar');
     }
