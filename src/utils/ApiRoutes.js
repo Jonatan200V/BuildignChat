@@ -1,4 +1,4 @@
-export const host = 'http://localhost:3555';
+export const host = 'https://api-chat-mongo-db.vercel.app';
 export const registerRoute = `${host}/register`;
 export const loginRoute = `${host}/login`;
 export const setAvatarRoute = `${host}/setAvatar`;
